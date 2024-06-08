@@ -13,6 +13,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @PostMapping("/addemployee")
+    public Employee addEmployee(@RequestBody Employee employee){
+        return employeeService.addEmployee(employee);
+    }
     @PostMapping("/addemployees")
     public List<Employee> addEmployees(@RequestBody List<Employee> employeeList){
         return employeeService.addEmployees(employeeList);
@@ -29,9 +33,19 @@ public class EmployeeController {
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
     }
+    @GetMapping("/grade/{grade}")
+    public List<Employee> getEmployeeByGrade(@PathVariable Character grade){
+        return employeeService.getEmployeeByGrade(grade);
+    }
+    @GetMapping("/salary/{salary}")
+    public List<Employee> getEmployeeBySalaryRange(@RequestParam String minSalary, @RequestParam String maxSalary){
+        return employeeService.getEmployeeBySalaryRange(minSalary,maxSalary);
+    }
+
     @DeleteMapping("/deleteemployee/{id}")
     public String deleteEmployee(@PathVariable int id){
         return employeeService.deleteEmployee(id);
     }
+
 
 }

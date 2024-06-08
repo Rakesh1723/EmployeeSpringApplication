@@ -51,8 +51,14 @@ public class Employee {
     public void setGrade(char grade) {
         this.grade = grade;
     }
-    public String toString(){
-        return "Employee Id: "+this.empId+" Name: "+this.name+" Basic Salary: "+this.basicSalary+" Grade: "+this.grade;
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empId=" + empId +
+                ", name='" + name + '\'' +
+                ", basicSalary='" + basicSalary + '\'' +
+                ", grade=" + grade +
+                '}';
     }
 
     @Override
